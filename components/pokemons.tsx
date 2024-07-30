@@ -12,7 +12,7 @@ import PokemonCard from '@/components/pokemon-card';
 import PokemonCardActive from '@/components/pokemon-card-active';
 import BackgroundOverlay from '@/components/background-overlay';
 
-export default function Test() {
+const Pokemons = () => {
 	const ref = useRef<HTMLDivElement>(null);
 	const id = useId();
 	const [page, setPage] = useState(0);
@@ -20,7 +20,7 @@ export default function Test() {
 		typeof pokemonDetails[number] | boolean | null
 	>(null);
 
-	const { pokemonDetails, isLoading } = useFetchPokemons(31);
+	const { pokemonDetails, isLoading } = useFetchPokemons(0);
 
 	useEffect(() => {
 		function onKeyDown(event: KeyboardEvent) {
@@ -68,4 +68,6 @@ export default function Test() {
 			</section>
 		</>
 	);
-}
+};
+
+export default Pokemons;
