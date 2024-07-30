@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { PokemonDetails, PokemonList } from '@/type';
 import Image from 'next/image';
 
+
 export default function Home() {
 	const [data, setData] = useState<PokemonList[]>([]);
 	const [pokemonDetails, setpokemonDetails] = useState<PokemonDetails[]>([]);
