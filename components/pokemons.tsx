@@ -20,7 +20,7 @@ const Pokemons = () => {
 		typeof pokemonDetails[number] | boolean | null
 	>(null);
 
-	const { pokemonDetails, isLoading } = useFetchPokemons(0);
+	const { pokemonDetails, isLoading } = useFetchPokemons(page);
 
 	useEffect(() => {
 		function onKeyDown(event: KeyboardEvent) {
