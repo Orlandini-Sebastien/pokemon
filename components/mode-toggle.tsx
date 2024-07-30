@@ -4,6 +4,8 @@ import * as React from 'react';
 import { Disc, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export function ModeToggle() {
 	const { setTheme, theme } = useTheme();
@@ -18,19 +20,46 @@ export function ModeToggle() {
 					setTheme('light');
 				}
 			}}
-			className="relative h-10 w-24 rounded-full border flex items-center justify-between px-1"
+			className={cn(
+				'relative h-10 w-24 rounded-full border-4 box-content flex items-center justify-between px-1 hover:cursor-pointer bg-container border-primary '
+			)}
 		>
-			<Sun className="h-8 w-8 p-1 box-border border rounded-full " />
-			<Moon className="h-8 w-8 p-1 box-border border rounded-full" />
+			<div className="h-[33px] w-[33px]   rounded-full">
+				<Image
+					width={600}
+					height={600}
+					alt="light"
+					src={'/solaroc.png'}
+					className="rounded-full object-contain"
+				/>
+			</div>
+
+			<div className="h-8 w-8   rounded-full">
+				<Image
+					width={600}
+					height={600}
+					alt="light"
+					src={'/seleroc.png'}
+					className="rounded-full object-contain"
+				/>
+			</div>
 			<motion.div
-				className="absolute h-8 w-8  rounded-full"
+				className="absolute h-8 w-8  rounded-full border-none"
 				initial={false}
 				animate={{
-					x: !isDark ? '54px' : '0px',
-					backgroundColor: !isDark ? '#383838' : '#F5F5F5',
+					x: !isDark ? '64px' : '0px',
+
+					rotate: !isDark ? 0 : -360,
 				}}
 				transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-			/>
+			>
+				<Image
+					className="rounded-full"
+					src={'/pokeball-toggle.png'}
+					alt="pokeball"
+					fill
+				/>
+			</motion.div>
 		</div>
 	);
 }

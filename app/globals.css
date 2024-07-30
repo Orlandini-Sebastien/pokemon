@@ -9,6 +9,7 @@ body {
 }
 
 @layer base {
+	
 	.h1 {
 		@apply text-3xl text-red-400 dark:text-red-300;
 	}

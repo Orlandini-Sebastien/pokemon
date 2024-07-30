@@ -3,16 +3,16 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Pokemons from '@/components/pokemons'; // Assurez-vous que le chemin est correct
-import { CloseIcon } from '@/components/close-icon';
 import Viewer from '@/components/model/viewer-pokeball';
 import { ModeToggle } from '@/components/mode-toggle';
+import { SquareArrowLeft } from 'lucide-react';
 
 export default function PokedexSection() {
 	const [isVisible, setIsVisible] = useState(false);
 
 	return (
 		<section className="relative w-full h-full  flex justify-center items-center flex-col">
-			<div className="absolute top-2 right-10">
+			<div className="absolute  top-2 right-10 p-1">
 				<ModeToggle />
 			</div>
 
@@ -49,12 +49,12 @@ export default function PokedexSection() {
 						transition={{ duration: 0.3 }}
 						className="w-full h-full"
 					>
-						<button
-							className="p-4 border rounded-xl bg-slate-100"
+						<SquareArrowLeft
 							onClick={() => setIsVisible(!isVisible)}
-						>
-							<CloseIcon />
-						</button>
+							color='light-gray'
+							className="h-14 w-14 text-primary-forward absolute top-2 left-10  "
+						/>
+
 						<Pokemons />
 					</motion.div>
 				)}

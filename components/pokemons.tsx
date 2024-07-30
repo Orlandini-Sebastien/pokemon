@@ -56,7 +56,7 @@ const Pokemons = () => {
 					setActive={setActive}
 				/>
 			</AnimatePresence>
-			<section className="w-full m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 item-center justify-center">
+			<section className="w-full m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 item-center justify-center mt-20">
 				{pokemonDetails.map((pokemonDetail) => (
 					<PokemonCard
 						key={id}
