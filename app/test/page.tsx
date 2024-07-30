@@ -59,6 +59,7 @@ export default function Test() {
 			<section className="w-full m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 item-center justify-center">
 				{pokemonDetails.map((pokemonDetail) => (
 					<PokemonCard
+						key={id}
 						id={id}
 						setActive={setActive}
 						pokemonDetail={pokemonDetail}
