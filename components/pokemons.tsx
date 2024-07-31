@@ -43,7 +43,7 @@ const Pokemons = () => {
 		setPage((prevPage) => prevPage + 1);
 	};
 
-	return isLoading && page === 0 ? (
+	return isLoading ? (
 		<Loading />
 	) : (
 		<>
