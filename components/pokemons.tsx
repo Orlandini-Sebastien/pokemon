@@ -39,7 +39,11 @@ const Pokemons = () => {
 
 	useOutsideClick(ref, () => setActive(null));
 
-	return isLoading ? (
+	const handleLoadMore = () => {
+		setPage((prevPage) => prevPage + 1);
+	};
+
+	return isLoading && page === 0 ? (
 		<Loading />
 	) : (
 		<>
@@ -56,16 +60,26 @@ const Pokemons = () => {
 					setActive={setActive}
 				/>
 			</AnimatePresence>
-			<section className="w-full m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 item-center justify-center mt-20">
-				{pokemonDetails.map((pokemonDetail) => (
+			<section className="w-full p-10 m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 item-center justify-center mt-20 gap-4 rounded-xl">
+				{pokemonDetails.map((pokemonDetail, index) => (
 					<PokemonCard
-						key={id}
+						key={`${id}-${index}`} // Update the key to avoid key conflicts
 						id={id}
 						setActive={setActive}
 						pokemonDetail={pokemonDetail}
 					/>
 				))}
 			</section>
+
+			<div className="flex justify-center mt-8">
+				<button
+					onClick={handleLoadMore}
+					className="border-4 border-red-foreground bg-red mb-20 font-bold py-2 px-4 rounded-xl text-red-foreground "
+					disabled={isLoading} // Optional: Disable button while loading
+				>
+					Load More
+				</button>
+			</div>
 		</>
 	);
 };

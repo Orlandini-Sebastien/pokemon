@@ -4,11 +4,27 @@ export interface PokemonList {
 }
 
 export interface PokemonDetails {
+	id: number;
+	height: number;
+	weight: number;
+	types: {
+		slot: number;
+		type: {
+			name: string;
+			url: string;
+		};
+	}[];
 	name: string;
 	sprites: {
 		front_default: string;
 		other: {
 			'official-artwork': {
+				front_default: string;
+			};
+			dream_world: {
+				front_default: string;
+			};
+			home: {
 				front_default: string;
 			};
 		};

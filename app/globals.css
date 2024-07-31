@@ -2,24 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-:root,
+body,
 html,
-body {
+:root {
 	height: 100%;
 }
 
 @layer base {
-	
-	.h1 {
-		@apply text-3xl text-red-400 dark:text-red-300;
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 20 14.3% 4.1%;
+		--primary-foreground: 24 9.8% 10%;
+		--primary: 60 9.1% 97.8%;
+		--red: 0 198% 98%;
+		--red-foreground: 358.333 198% 7%;
+
+		--card: 352 100% 98%;
+		--card-foreground: 336 2% 36%;
+
+		--active: 250 100% 97%;
+		--active-foreground: 358.333 3% 36%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 20 14.3% 4.1%;
+		--secondary: 60 9.1% 97.8%;
+		--secondary-foreground: 12 6.5% 15.1%;
 	}
-	.bg-container {
-		@apply bg-slate-50 dark:bg-slate-900;
+
+	.dark {
+		--background: 20 14.3% 4.1%;
+		--foreground: 60 9.1% 97.8%;
+		--primary: 24 9.8% 10%;
+		--primary-foreground: 60 9.1% 97.8%;
+		--red: 358.333 198% 7%;
+		--red-foreground: 0 198% 98%;
+
+		--card: 336 2% 36%;
+		--card-foreground: 352 100% 98%;
+
+		--active: 358.333 3% 36%;
+		--active-foreground: 250 100% 97%;
+
+		--popover: 20 14.3% 4.1%;
+		--popover-foreground: 60 9.1% 97.8%;
+		--secondary: 12 6.5% 15.1%;
+		--secondary-foreground: 60 9.1% 97.8%;
 	}
-	.bg-primary {
-		@apply bg-white dark:bg-black;
+}
+
+@layer base {
+	* {
+		@apply border-border;
 	}
-	.bg-primary-forward {
-		@apply dark:bg-white bg-black;
+	body {
+		@apply bg-background text-foreground;
 	}
 }

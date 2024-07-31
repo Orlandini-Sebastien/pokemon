@@ -21,32 +21,42 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 			layoutId={`card-${pokemonDetail.name}-${id}`}
 			key={`card-${pokemonDetail.name}-${id}`}
 			onClick={() => setActive(pokemonDetail)}
-			className="border w-full rounded-lg flex flex-col justify-center items-center "
+			className="relative border-4  shadow-red rounded-xl flex flex-col items-center justify-between bg-card border-red-foreground"
 		>
-			<motion.div layoutId={`image-${pokemonDetail.name}-${id}`}>
+			<motion.div
+				className="text-red-foreground text-2xl font-bold border-4 rounded-tl-xl aspect-square min-w-10 p-1 absolute -top-1 -left-1 flex justify-center items-center"
+				layoutId={`id-${pokemonDetail.name}-${id}`}
+			>
+				{pokemonDetail.id}
+			</motion.div>
+			<motion.div
+				className="w-5/6 aspect-square flex"
+				layoutId={`image-${pokemonDetail.name}-${id}`}
+			>
 				<Image
+					className="object-center w-5/6 aspect-square object-contain"
 					src={
 						pokemonDetail.sprites.versions['generation-v']['black-white']
-							.animated.front_default
+							.animated.front_default ||
+						pokemonDetail.sprites.other.dream_world.front_default ||
+						pokemonDetail.sprites.other.home.front_default
 					}
-					height={300}
-					width={300}
-					alt={pokemonDetail.sprites.front_default}
+					height={600}
+					width={600}
+					alt={
+						pokemonDetail.sprites.versions['generation-v']['black-white']
+							.animated.front_default ||
+						pokemonDetail.sprites.front_default ||
+						pokemonDetail.sprites.other.home.front_default
+					}
 				/>
 			</motion.div>
 
-			<motion.div layoutId={`name-${pokemonDetail.name}-${id}`}>
-				{pokemonDetail.name}
-			</motion.div>
 			<motion.div
-				layoutId={`stats-${pokemonDetail.name}-${id}`}
-				className="hidden w-full"
+				className="text-red-foreground text-2xl font-bold"
+				layoutId={`name-${pokemonDetail.name}-${id}`}
 			>
-				{pokemonDetail.stats.map((stat) => (
-					<div key={stat.stat.name}>
-						{stat.stat.name} : {stat.base_stat}
-					</div>
-				))}
+				{pokemonDetail.name}
 			</motion.div>
 		</motion.div>
 	);

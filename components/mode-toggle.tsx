@@ -1,10 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { Disc, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
 export function ModeToggle() {
@@ -20,11 +18,9 @@ export function ModeToggle() {
 					setTheme('light');
 				}
 			}}
-			className={cn(
-				'relative h-10 w-24 rounded-full border-4 box-content flex items-center justify-between px-1 hover:cursor-pointer bg-container border-primary '
-			)}
+			className="relative h-10 w-24 rounded-full border-4 box-content flex items-center justify-between px-1 hover:cursor-pointer bg-red border-red-foreground"
 		>
-			<div className="h-[33px] w-[33px]   rounded-full">
+			<div className="h-[33px] w-[33px] rounded-full">
 				<Image
 					width={600}
 					height={600}
@@ -34,7 +30,7 @@ export function ModeToggle() {
 				/>
 			</div>
 
-			<div className="h-8 w-8   rounded-full">
+			<div className="h-[28px] w-[28px]  rounded-full">
 				<Image
 					width={600}
 					height={600}

@@ -11,11 +11,16 @@ export default function PokedexSection() {
 	const [isVisible, setIsVisible] = useState(false);
 
 	return (
-		<section className="relative w-full h-full  flex justify-center items-center flex-col">
-			<div className="absolute  top-2 right-10 p-1">
+		<section className="relative w-full h-full  flex justify-center items-center flex-col bg-primary">
+
+			{/*-------------------------- TOGGLE --------------------------------*/}
+			<div className="absolute  top-2 right-10 p-1 ">
 				<ModeToggle />
 			</div>
+			{/* --------------------------------------------------------------------------- */}
 
+
+			{/*-------------------------- ROUTER TO POKEDEX --------------------------------*/}
 			<AnimatePresence>
 				{!isVisible && (
 					<>
@@ -30,16 +35,18 @@ export default function PokedexSection() {
 								},
 							}}
 							transition={{ delay: 0.3, duration: 0.3 }}
-							className="absolute p-10 border rounded-xl bg-container  "
+							className="absolute p-10 rounded-xl bg-red border-red-foreground border-4"
 							onClick={() => setIsVisible(true)}
 						>
-							<h1 className="h1">Pokedex</h1>
+							<h1 className="text-red-foreground text-3xl">Pokedex</h1>
 							<Viewer />
 						</motion.button>
 					</>
 				)}
 			</AnimatePresence>
+			{/*---------------------------------------------------------------------------------*/}
 
+			{/*-------------------------- THE POKEDEX ------------------------------------------*/}
 			<AnimatePresence>
 				{isVisible && (
 					<motion.div
@@ -51,14 +58,15 @@ export default function PokedexSection() {
 					>
 						<SquareArrowLeft
 							onClick={() => setIsVisible(!isVisible)}
-							color='light-gray'
-							className="h-14 w-14 text-primary-forward absolute top-2 left-10  "
+							className="h-14 w-14 absolute top-2 left-10 text-red-foreground"
 						/>
 
 						<Pokemons />
 					</motion.div>
 				)}
 			</AnimatePresence>
+			{/*---------------------------------------------------------------------------------*/}
+
 		</section>
 	);
 }
