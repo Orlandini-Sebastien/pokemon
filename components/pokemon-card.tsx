@@ -21,7 +21,8 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 			layoutId={`card-${pokemonDetail.name}-${id}`}
 			key={`card-${pokemonDetail.name}-${id}`}
 			onClick={() => setActive(pokemonDetail)}
-			className="relative border-4  shadow-red rounded-xl flex flex-col items-center justify-between bg-card border-red-foreground"
+			whileHover={{ scale: 1.05 }}
+			className="relative border-4  shadow-red rounded-xl flex flex-col items-center justify-between bg-card border-red-foreground "
 		>
 			<motion.div
 				className="text-red-foreground text-2xl font-bold border-4 rounded-tl-xl aspect-square min-w-10 p-1 absolute -top-1 -left-1 flex justify-center items-center"
@@ -49,11 +50,12 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 						pokemonDetail.sprites.front_default ||
 						pokemonDetail.sprites.other.home.front_default
 					}
+					unoptimized={true}
 				/>
 			</motion.div>
 
 			<motion.div
-				className="text-red-foreground text-2xl font-bold"
+				className="text-red-foreground text-2xl font-bold capitalize"
 				layoutId={`name-${pokemonDetail.name}-${id}`}
 			>
 				{pokemonDetail.name}

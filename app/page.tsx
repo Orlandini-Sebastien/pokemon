@@ -11,7 +11,7 @@ export default function PokedexSection() {
 	const [isVisible, setIsVisible] = useState(false);
 
 	return (
-		<section className="relative w-full h-full  flex justify-center items-center flex-col bg-primary">
+		<section className="relative w-full h-full  flex justify-center items-center flex-col bg-primary max-w-7xl m-auto ">
 
 			{/*-------------------------- TOGGLE --------------------------------*/}
 			<div className="absolute  top-2 right-10 p-1 ">
