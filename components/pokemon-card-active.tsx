@@ -176,7 +176,7 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 						</div>
 
 						<motion.h3
-							animate={{ flex: 'flex', transition: { duration: 0.5 } }}
+							animate={{ flex: 1, transition: { duration: 0.5 } }}
 							layoutId={`stats-${active.name}-${id}`}
 							className="text-primary-foreground w-full flex flex-col justify-start items-start "
 						>

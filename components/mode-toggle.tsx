@@ -1,13 +1,18 @@
 'use client';
 
-import * as React from 'react';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export function ModeToggle() {
 	const { setTheme, theme } = useTheme();
 	const isDark = theme === 'dark';
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 
 	return (
 		<div
@@ -22,30 +27,30 @@ export function ModeToggle() {
 		>
 			<div className="h-[33px] w-[33px] rounded-full">
 				<Image
-					width={600}
-					height={600}
+					width={50}
+					height={50}
 					alt="light"
 					src={'/solaroc.png'}
 					className="rounded-full object-contain"
+					priority
 				/>
 			</div>
 
 			<div className="h-[28px] w-[28px]  rounded-full">
 				<Image
-					width={600}
-					height={600}
+					width={50}
+					height={50}
 					alt="light"
 					src={'/seleroc.png'}
 					className="rounded-full object-contain"
 				/>
 			</div>
 			<motion.div
-				className="absolute h-8 w-8  rounded-full border-none"
+				className="absolute h-8 w-8 rounded-full border-none"
 				initial={false}
 				animate={{
-					x: !isDark ? '64px' : '0px',
-
-					rotate: !isDark ? 0 : -360,
+					x: isMounted && !isDark ? '64px' : '0px',
+					rotate: isMounted && !isDark ? 0 : -360,
 				}}
 				transition={{ type: 'spring', stiffness: 300, damping: 30 }}
 			>
@@ -53,7 +58,8 @@ export function ModeToggle() {
 					className="rounded-full"
 					src={'/pokeball-toggle.png'}
 					alt="pokeball"
-					fill
+					width={600}
+					height={600}
 				/>
 			</motion.div>
 		</div>

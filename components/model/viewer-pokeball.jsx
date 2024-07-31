@@ -15,9 +15,7 @@ export default function ViewerPokeball() {
 					environment="city"
 					shadows={false}
 				>
-					false
 					<Model />
-					false
 				</Stage>
 			</Suspense>
 			<OrbitControls ref={ref} autoRotate />
