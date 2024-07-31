@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -15,9 +17,8 @@ interface PokemonCardActiveProps {
 
 const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 	({ id, active, setActive }, ref) => {
-		if (!active || typeof active !== 'object') return null;
-
 		const { theme } = useTheme();
+		if (!active || typeof active !== 'object') return null;
 
 		const typeColors: Record<PokemonType, string> = {
 			normal: 'bg-normal',
