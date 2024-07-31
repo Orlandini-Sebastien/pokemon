@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Pokemons from '@/components/pokemons'; // Assurez-vous que le chemin est correct
+import { SquareArrowLeft } from 'lucide-react';
+
+import Pokemons from '@/components/pokemons'; 
 import Viewer from '@/components/model/viewer-pokeball';
 import { ModeToggle } from '@/components/mode-toggle';
-import { SquareArrowLeft } from 'lucide-react';
 
 export default function PokedexSection() {
 	const [isVisible, setIsVisible] = useState(false);

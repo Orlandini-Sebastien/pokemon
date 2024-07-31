@@ -1,4 +1,4 @@
-// components/BackgroundOverlay.tsx
+
 import { motion } from 'framer-motion';
 
 export default function BackgroundOverlay() {
