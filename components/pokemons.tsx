@@ -43,7 +43,9 @@ const Pokemons = () => {
 		setPage((prevPage) => prevPage + 1);
 	};
 
-	return (
+	return isLoading && page === 0 ? (
+		<Loading />
+	) : (
 		<>
 			{/* Arrière plan sombre lorsqu'il y a une card active */}
 			<AnimatePresence>
