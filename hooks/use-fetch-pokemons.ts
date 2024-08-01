@@ -9,11 +9,10 @@ interface PokemonListResponse {
 }
 
 const useFetchPokemons = (page: number) => {
-	console.log('USE-FETCH-POKEMON');
 
 	const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const isInitialMount = useRef(true);
+	// const isInitialMount = useRef(true);
 
 	useEffect(() => {
 		// Skip the first effect run if it's the initial mount FOR LOCALHOST  !!!!!!!!
@@ -24,12 +23,11 @@ const useFetchPokemons = (page: number) => {
 
 		setIsLoading(true);
 		const fetchData = async () => {
-			console.log('USE-FETCH-POKEMON-FETCH-DATA');
 			try {
 				const response = await axios.get<PokemonListResponse>(
 					`https://pokeapi.co/api/v2/pokemon?offset=${20 * page}&limit=20`
 				);
-				console.log('USE-FETCH-POKEMON-FETCH-DATA-RESPONSE');
+
 				const pokemonUrls = response.data.results.map((pokemon) => pokemon.url);
 				const pokemonDetailsPromises = pokemonUrls.map((url) => axios.get(url));
 				const pokemonDetailsResponses = await Promise.all(
@@ -42,7 +40,6 @@ const useFetchPokemons = (page: number) => {
 					...prevPokemonDetails,
 					...newpokemonDetails,
 				]);
-				console.log('USE-FETCH-POKEMON-FETCH-DATA-RESPONSE-SETPOKEMONDETAIL');
 			} catch (error) {
 				console.log(error);
 			}
