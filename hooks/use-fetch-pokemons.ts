@@ -16,7 +16,7 @@ const useFetchPokemons = (page: number) => {
 	const isInitialMount = useRef(true);
 
 	useEffect(() => {
-		// Skip the first effect run if it's the initial mount
+		// Skip the first effect run if it's the initial mount FOR LOCALHOST  !!!!!!!!
 		// if (isInitialMount.current) {
 		// 	isInitialMount.current = false;
 		// 	return;
