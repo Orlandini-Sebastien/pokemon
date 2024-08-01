@@ -9,7 +9,6 @@ import {
 	darkTypeColors,
 	lightTypeColors,
 	maxStats,
-	typeColors,
 } from '@/type';
 import { CloseIcon } from './close-icon';
 import { useTheme } from 'next-themes';
@@ -21,6 +20,28 @@ interface PokemonCardActiveProps {
 		React.SetStateAction<PokemonDetails | boolean | null>
 	>;
 }
+const typeColors: Record<PokemonType, string> = {
+	normal: 'bg-normal',
+	fighting: 'bg-fighting',
+	flying: 'bg-flying',
+	poison: 'bg-poison',
+	ground: 'bg-ground',
+	rock: 'bg-rock',
+	bug: 'bg-bug',
+	ghost: 'bg-ghost',
+	steel: 'bg-steel',
+	fire: 'bg-fire',
+	water: 'bg-water',
+	grass: 'bg-grass',
+	electric: 'bg-electric',
+	psychic: 'bg-psychic',
+	ice: 'bg-ice',
+	dragon: 'bg-dragon',
+	dark: 'bg-dark',
+	fairy: 'bg-fairy',
+	stellar: 'bg-stellar',
+	unknown: 'bg-unknown',
+};
 
 const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 	({ id, active, setActive }, ref) => {
@@ -137,12 +158,20 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 										</span>
 										<span className="border w-full text-end my-0.5 rounded relative ">
 											<div className="font-bold">{stat.base_stat}</div>
-											<div
-												className="absolute top-0 left-0 h-full rounded opacity-60 "
-												style={{
+											<motion.div
+												initial={{ width: 0 }}
+												animate={{
 													width: `${
 														(stat.base_stat * 100) / maxStats[statName]
 													}%`,
+													transition: {
+														delay: 0.2,
+														duration: 0.3,
+														ease: 'easeInOut',
+													},
+												}}
+												className="absolute top-0 left-0 h-full rounded opacity-60 "
+												style={{
 													backgroundColor:
 														(stat.base_stat * 100) / maxStats[statName] < 10
 															? '#DEFCCF' // Vert clair
