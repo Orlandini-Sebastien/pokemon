@@ -9,8 +9,10 @@ interface PokemonListResponse {
 }
 
 const useFetchPokemons = (page: number) => {
-
 	const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails[]>([]);
+	const [searchedPokemon, setSearchedPokemon] = useState<PokemonDetails | null>(
+		null
+	);
 	const [isLoading, setIsLoading] = useState(true);
 	// const isInitialMount = useRef(true);
 
@@ -48,7 +50,20 @@ const useFetchPokemons = (page: number) => {
 		fetchData();
 	}, [page]);
 
-	return { pokemonDetails, isLoading };
+	const fetchPokemonById = async (id: number) => {
+		setIsLoading(true);
+		try {
+			const response = await axios.get<PokemonDetails>(
+				`https://pokeapi.co/api/v2/pokemon/${id}`
+			);
+			setSearchedPokemon(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+		setIsLoading(false);
+	};
+
+	return { pokemonDetails, searchedPokemon, fetchPokemonById, isLoading };
 };
 
 export default useFetchPokemons;

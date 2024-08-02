@@ -11,7 +11,6 @@ import Loading from '@/components/loading/viewer-pokeball';
 import PokemonCard from '@/components/pokemon-card';
 import PokemonCardActive from '@/components/pokemon-card-active';
 import BackgroundOverlay from '@/components/background-overlay';
-import { div } from 'three/examples/jsm/nodes/Nodes.js';
 
 const Pokemons = () => {
 	const ref = useRef<HTMLDivElement>(null);
@@ -20,8 +19,15 @@ const Pokemons = () => {
 	const [active, setActive] = useState<
 		typeof pokemonDetails[number] | boolean | null
 	>(null);
+	const [searchId, setSearchId] = useState<string>('');
+	const [isSearching, setIsSearching] = useState(false);
 
-	const { pokemonDetails, isLoading } = useFetchPokemons(page);
+	const {
+		pokemonDetails,
+		searchedPokemon,
+		fetchPokemonById,
+		isLoading,
+	} = useFetchPokemons(page);
 
 	useEffect(() => {
 		function onKeyDown(event: KeyboardEvent) {
@@ -44,9 +50,29 @@ const Pokemons = () => {
 		setPage((prevPage) => prevPage + 1);
 	};
 
+	const handleSearch = () => {
+		const id = parseInt(searchId);
+		if (!isNaN(id)) {
+			fetchPokemonById(id);
+			setIsSearching(true); // Activer le mode recherche
+		}
+	};
+
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchId(e.target.value);
+		setIsSearching(false); // Désactiver le mode recherche jusqu'à ce que l'utilisateur valide la recherche
+	};
+
+	// Réinitialiser l'affichage lorsque l'input est vide
+	useEffect(() => {
+		if (searchId === '') {
+			setIsSearching(false); // Désactiver le mode recherche si l'input est vide
+		}
+	}, [searchId]);
+
 	return isLoading && page === 0 ? (
-		<div className="self-center flex justify-center items-center h-full ">
-			<div className="self-center flex justify-center items-center h-1/2 ">
+		<div className="self-center flex justify-center items-center h-full">
+			<div className="self-center flex justify-center items-center h-1/2">
 				<Loading />
 			</div>
 		</div>
@@ -65,22 +91,48 @@ const Pokemons = () => {
 					setActive={setActive}
 				/>
 			</AnimatePresence>
-			<section className="w-full p-10 m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 item-center justify-center mt-20 gap-4 rounded-xl">
-				{pokemonDetails.map((pokemonDetail, index) => (
+
+			<div className="flex justify-center mt-4">
+				<input
+					type="text"
+					placeholder="Enter Pokémon ID"
+					value={searchId}
+					onChange={handleInputChange}
+					className="border-2 border-gray-300 rounded-lg p-2 mr-2"
+				/>
+				<button
+					onClick={handleSearch}
+					className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+				>
+					Search
+				</button>
+			</div>
+
+			<section className="w-full p-10 m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 item-center justify-center mt-10 gap-4 rounded-xl">
+				{isSearching && searchedPokemon ? (
 					<PokemonCard
-						key={`${id}-${index}`} // Update the key to avoid key conflicts
+						key={`${id}-${searchedPokemon.id}`}
 						id={id}
 						setActive={setActive}
-						pokemonDetail={pokemonDetail}
+						pokemonDetail={searchedPokemon}
 					/>
-				))}
+				) : (
+					pokemonDetails.map((pokemonDetail, index) => (
+						<PokemonCard
+							key={`${id}-${index}`}
+							id={id}
+							setActive={setActive}
+							pokemonDetail={pokemonDetail}
+						/>
+					))
+				)}
 			</section>
 
 			<div className="flex justify-center mt-8">
 				<button
 					onClick={handleLoadMore}
-					className="border-4 border-red-foreground bg-red mb-20 font-bold py-2 px-4 rounded-xl text-red-foreground "
-					disabled={isLoading} // Optional: Disable button while loading
+					className="border-4 border-red-foreground bg-red mb-20 font-bold py-2 px-4 rounded-xl text-red-foreground"
+					disabled={isLoading}
 				>
 					Load More
 				</button>
