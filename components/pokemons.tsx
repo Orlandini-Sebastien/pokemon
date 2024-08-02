@@ -44,7 +44,7 @@ const Pokemons = () => {
 		setPage((prevPage) => prevPage + 1);
 	};
 
-	return !isLoading && page === 0 ? (
+	return isLoading && page === 0 ? (
 		<div className="self-center flex justify-center items-center h-full ">
 			<div className="self-center flex justify-center items-center h-1/2 ">
 				<Loading />
