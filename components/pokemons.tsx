@@ -97,14 +97,14 @@ const Pokemons = () => {
 			</AnimatePresence>
 
 			<section className="flex max-md:hidden w-full justify-between item-center p-10 ">
-				<div className="flex justify-center items-center">
+				<div className="flex justify-start items-center  w-full">
 					<SquareArrowLeft
 						onClick={() => router.push('/')}
 						className="h-14 w-14  text-red-foreground  "
 					/>
 				</div>
 
-				<div className="flex justify-center  ">
+				<div className="flex justify-center   ">
 					<input
 						type="text"
 						placeholder="Enter Pokémon ID"
@@ -119,7 +119,7 @@ const Pokemons = () => {
 						Search
 					</button>
 				</div>
-				<div className=" flex justify-center items-center">
+				<div className=" flex justify-end items-center  w-full">
 					<ModeToggle />
 				</div>
 			</section>
