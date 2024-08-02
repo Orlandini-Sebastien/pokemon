@@ -7,10 +7,11 @@ import { AnimatePresence } from 'framer-motion';
 import { useOutsideClick } from '@/hooks/use-outside-click';
 import useFetchPokemons from '@/hooks/use-fetch-pokemons';
 
-import Loading from '@/components/loading';
+import Loading from '@/components/loading/viewer-pokeball';
 import PokemonCard from '@/components/pokemon-card';
 import PokemonCardActive from '@/components/pokemon-card-active';
 import BackgroundOverlay from '@/components/background-overlay';
+import { div } from 'three/examples/jsm/nodes/Nodes.js';
 
 const Pokemons = () => {
 	const ref = useRef<HTMLDivElement>(null);
@@ -43,8 +44,12 @@ const Pokemons = () => {
 		setPage((prevPage) => prevPage + 1);
 	};
 
-	return isLoading && page === 0 ? (
-		<Loading />
+	return !isLoading && page === 0 ? (
+		<div className="self-center flex justify-center items-center h-full ">
+			<div className="self-center flex justify-center items-center h-1/2 ">
+				<Loading />
+			</div>
+		</div>
 	) : (
 		<>
 			{/* Arrière plan sombre lorsqu'il y a une card active */}

@@ -8,8 +8,6 @@ html,
 	height: 100%;
 }
 
-
-
 @layer base {
 	:root {
 		--background: 0 0% 100%;
@@ -29,8 +27,6 @@ html,
 		--popover-foreground: 20 14.3% 4.1%;
 		--secondary: 60 9.1% 97.8%;
 		--secondary-foreground: 12 6.5% 15.1%;
-
-
 	}
 
 	.dark {
@@ -51,7 +47,6 @@ html,
 		--popover-foreground: 60 9.1% 97.8%;
 		--secondary: 12 6.5% 15.1%;
 		--secondary-foreground: 60 9.1% 97.8%;
-
 	}
 }
 
@@ -62,4 +57,27 @@ html,
 	body {
 		@apply bg-background text-foreground;
 	}
+}
+
+/* PokedexARC */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.letter {
+	animation: fadeIn 0.5s ease-out forwards;
+}
+
+.arc {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

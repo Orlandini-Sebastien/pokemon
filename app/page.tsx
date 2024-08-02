@@ -6,7 +6,6 @@ import { ModeToggle } from '@/components/mode-toggle';
 import { useRouter } from 'next/navigation';
 
 export default function PokedexSection() {
-
 	const router = useRouter();
 	return (
 		<section className="relative w-full h-full  flex justify-center items-center flex-col bg-primary max-w-7xl m-auto ">
@@ -31,8 +30,9 @@ export default function PokedexSection() {
 					className="absolute p-10 rounded-xl bg-red border-red-foreground border-4"
 					onClick={() => router.push('/pokedex')}
 				>
-					<h1 className="text-red-foreground text-3xl">Pokedex</h1>
-					<Viewer />
+					<div className="transition-transform duration-200 ease-in-out transform hover:scale-105 active:scale-95">
+						<Viewer />
+					</div>
 				</motion.button>
 			</AnimatePresence>
 		</section>
