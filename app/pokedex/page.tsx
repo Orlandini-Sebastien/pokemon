@@ -1,4 +1,5 @@
 'use client';
+import { ModeToggle } from '@/components/mode-toggle';
 import Pokemons from '@/components/pokemons';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SquareArrowLeft } from 'lucide-react';
@@ -17,10 +18,7 @@ const Pokedex = () => {
 				transition={{ duration: 0.3 }}
 				className="w-full h-full"
 			>
-				<SquareArrowLeft
-					onClick={() => router.push('/')}
-					className="h-14 w-14 absolute top-2 left-10 text-red-foreground"
-				/>
+			
 
 				<Pokemons />
 			</motion.div>
