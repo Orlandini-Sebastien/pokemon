@@ -27,12 +27,10 @@ export default function PokedexSection() {
 						},
 					}}
 					transition={{ delay: 0.3, duration: 0.3 }}
-					className="absolute p-10 rounded-xl bg-red border-red-foreground border-4 w-60 h-60"
+					className="absolute p-10 rounded-xl bg-red border-red-foreground border-4 "
 					onClick={() => router.push('/pokedex')}
 				>
-					<div className="transition-transform duration-200 ease-in-out transform hover:scale-105 active:scale-95">
-						<Viewer />
-					</div>
+					<Viewer/>
 				</motion.button>
 			</AnimatePresence>
 		</section>
