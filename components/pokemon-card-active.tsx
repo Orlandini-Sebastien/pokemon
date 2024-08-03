@@ -118,7 +118,7 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 						>
 							{active.id}
 						</motion.div>
-						
+
 						<motion.div
 							className="flex justify-center items-center"
 							initial={{ opacity: 0 }}
@@ -145,7 +145,7 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 								className=" w-[280px] h-[280px] lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-scale-down scale-[3.3] z-50  pointer-events-none"
 							/>
 						</motion.div>
-						<div className="flex flex-col w-full gap-4 justify-between items-start p-4 ">
+						<div className="flex flex-col w-full gap-2 justify-between items-start p-4 ">
 							<div className="flex gap-2 justify-center items-center w-full">
 								<motion.h3
 									layoutId={`name-${active.name}-${id}`}
@@ -171,7 +171,7 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 								</motion.h3>
 							</div>
 							{info ? (
-								<>
+								<div className="flex flex-col justify-between items-start gap-2  h-48 ">
 									<motion.div
 										initial={{ opacity: 0 }}
 										animate={{ opacity: 1 }}
@@ -272,7 +272,7 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 										</motion.div>
 									</motion.div>{' '}
 									<motion.div
-										className="flex flex-wrap justify-around item-center "
+										className="flex  justify-start   item-center w-full "
 										initial="hidden"
 										animate="visible"
 										exit={{ opacity: 0, transition: { duration: 0.05 } }}
@@ -304,21 +304,22 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 										>
 											<ArrowBigRightDash />
 										</motion.div>
-
-										{active.abilities.map((ability) => (
-											<motion.div
-												key={ability.ability.name}
-												className="px-2 mx-2  rounded-xl border"
-												variants={{
-													hidden: { opacity: 0 },
-													visible: { opacity: 1 },
-												}}
-											>
-												{ability.ability.name}
-											</motion.div>
-										))}
+										<div className="flex flex-wrap gap-2">
+											{active.abilities.map((ability) => (
+												<motion.div
+													key={ability.ability.name}
+													className="px-2 mx-2  rounded-xl border"
+													variants={{
+														hidden: { opacity: 0 },
+														visible: { opacity: 1 },
+													}}
+												>
+													{ability.ability.name}
+												</motion.div>
+											))}
+										</div>
 									</motion.div>
-								</>
+								</div>
 							) : (
 								<motion.h3
 									animate={{ flex: 1, transition: { duration: 0.5 } }}

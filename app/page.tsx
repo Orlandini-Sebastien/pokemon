@@ -5,7 +5,6 @@ import Viewer from '@/components/model/viewer-pokeball';
 import { ModeToggle } from '@/components/mode-toggle';
 import { useRouter } from 'next/navigation';
 
-
 export default function PokedexSection() {
 	const router = useRouter();
 	return (
@@ -31,10 +30,11 @@ export default function PokedexSection() {
 					className="absolute p-10 rounded-xl bg-red border-red-foreground border-4 "
 					onClick={() => router.push('/pokedex')}
 				>
-					<Viewer />
+					<div className="hover:scale-105">
+						<Viewer />
+					</div>
 				</motion.button>
 			</AnimatePresence>
-	
 		</section>
 	);
 }

@@ -27,7 +27,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 			layoutId={`card-${pokemonDetail.name}-${id}`}
 			onClick={() => setActive(pokemonDetail)}
 			whileHover={{ scale: 1.05 }}
-			className="relative border-4 shadow-red rounded-xl flex flex-col items-center justify-between bg-card border-red-foreground"
+			className="relative border-4 shadow-red rounded-xl flex flex-col items-center justify-between bg-card border-red-foreground hover:cursor-pointer"
 			style={{
 				opacity: isActive ? 0 : 1,
 			}}
