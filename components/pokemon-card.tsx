@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { PokemonDetails } from '@/type';
+import { PokemonDetails, PokemonSpecies } from '@/type';
 
 interface PokemonCardProps {
 	pokemonDetail: PokemonDetails;
@@ -9,12 +9,16 @@ interface PokemonCardProps {
 	setActive: (
 		value: React.SetStateAction<boolean | PokemonDetails | null>
 	) => void;
+	active: React.SetStateAction<boolean | PokemonDetails | null>;
+	searchedPokemonSpecies: PokemonSpecies;
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({
 	pokemonDetail,
 	id,
 	setActive,
+	active,
+	searchedPokemonSpecies,
 }) => {
 	return (
 		<motion.div
@@ -23,6 +27,10 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 			onClick={() => setActive(pokemonDetail)}
 			whileHover={{ scale: 1.05 }}
 			className="relative border-4  shadow-red rounded-xl flex flex-col items-center justify-between bg-card border-red-foreground "
+			style={{
+				opacity:
+					active && searchedPokemonSpecies?.id === pokemonDetail.id ? 0 : 1,
+			}}
 		>
 			<motion.div
 				className="text-red-foreground text-2xl font-bold border-4 rounded-tl-xl aspect-square min-w-10 p-1 absolute -top-1 -left-1 flex justify-center items-center"
@@ -36,7 +44,8 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 			>
 				<Image
 					className="object-center w-5/6 aspect-square object-contain"
-					src={pokemonDetail.sprites.other['official-artwork'].front_default ||
+					src={
+						pokemonDetail.sprites.other['official-artwork'].front_default ||
 						pokemonDetail.sprites.versions['generation-v']['black-white']
 							.animated.front_default ||
 						pokemonDetail.sprites.other.dream_world.front_default ||

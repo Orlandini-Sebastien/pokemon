@@ -160,4 +160,5 @@ export interface PokemonSpecies {
 			name: string;
 		};
 	}[];
+	id: number;
 }

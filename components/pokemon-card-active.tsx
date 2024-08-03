@@ -13,8 +13,7 @@ import {
 } from '@/type';
 import { CloseIcon } from './close-icon';
 import { useTheme } from 'next-themes';
-import { CircleHelp, FileQuestion } from 'lucide-react';
-import useFetchPokemonSpecies from '@/hooks/use-fetch-pokemon-spacies';
+import { FileQuestion } from 'lucide-react';
 
 interface PokemonCardActiveProps {
 	id: string;

@@ -97,6 +97,7 @@ const Pokemons = () => {
 			</AnimatePresence>
 
 			<AnimatePresence>
+				(
 				<PokemonCardActive
 					id={id}
 					ref={ref}
@@ -104,7 +105,7 @@ const Pokemons = () => {
 					setActive={setActive}
 					searchedPokemonSpecies={searchedPokemonSpecies}
 				/>
-				
+				)
 			</AnimatePresence>
 
 			<section className="flex max-md:hidden w-full justify-between item-center p-10 ">
@@ -173,6 +174,8 @@ const Pokemons = () => {
 							id={id}
 							setActive={setActive}
 							pokemonDetail={searchedPokemon}
+							active={active}
+							searchedPokemonSpecies={searchedPokemonSpecies}
 						/>
 					</div>
 				</section>
@@ -184,7 +187,9 @@ const Pokemons = () => {
 								key={`${id}-${index}`}
 								id={id}
 								setActive={setActive}
+								active={active}
 								pokemonDetail={pokemonDetail}
+								searchedPokemonSpecies={searchedPokemonSpecies}
 							/>
 						))}
 					</section>
