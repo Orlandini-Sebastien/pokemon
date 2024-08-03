@@ -49,6 +49,12 @@ export interface PokemonDetails {
 			url: string;
 		};
 	}[];
+	abilities: {
+		ability: {
+			name: string;
+			url: string;
+		};
+	}[];
 }
 
 export type PokemonType =

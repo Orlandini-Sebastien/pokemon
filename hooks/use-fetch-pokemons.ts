@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { PokemonDetails, PokemonList } from '@/type';
 
@@ -14,14 +14,14 @@ const useFetchPokemons = (page: number) => {
 		null
 	);
 	const [isLoading, setIsLoading] = useState(true);
-	// const isInitialMount = useRef(true);
+	const isInitialMount = useRef(true);
 
 	useEffect(() => {
 		// Skip the first effect run if it's the initial mount FOR LOCALHOST  !!!!!!!!
-		// if (isInitialMount.current) {
-		// 	isInitialMount.current = false;
-		// 	return;
-		// }
+		if (isInitialMount.current) {
+			isInitialMount.current = false;
+			return;
+		}
 
 		setIsLoading(true);
 		const fetchData = async () => {

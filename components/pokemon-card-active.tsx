@@ -13,7 +13,7 @@ import {
 } from '@/type';
 import { CloseIcon } from './close-icon';
 import { useTheme } from 'next-themes';
-import { FileQuestion } from 'lucide-react';
+import { ArrowBigRightDash, FileQuestion } from 'lucide-react';
 
 interface PokemonCardActiveProps {
 	id: string;
@@ -70,7 +70,7 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0, transition: { duration: 0.05 } }}
-					className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+					className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6 z-50"
 					onClick={() => setActive(null)}
 				>
 					<CloseIcon />
@@ -78,6 +78,9 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 
 				<motion.div
 					layoutId={`card-${active.name}-${id}`}
+					initial={{
+						height: 400,
+					}}
 					animate={{
 						opacity: 1,
 						height: 600,
@@ -87,7 +90,7 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 					exit={{ opacity: 0, transition: { duration: 0.5 } }}
 					ref={ref}
 					className={`relative w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] 
-					flex flex-col sm:rounded-3xl overflow-hidden border-4 border-active-foreground
+					flex flex-col sm:rounded-3xl  border-4 border-active-foreground
 			
 					 `}
 					style={{
@@ -100,9 +103,9 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 							onClick={() => {
 								setInfo(!info);
 							}}
-							className='className="text-red-foreground text-2xl font-bold box-content rounded-full aspect-square min-w-10 p-1 absolute top-2 left-2 flex justify-center items-center border-card-foreground "'
+							className='className="text-red-foreground text-2xl font-bold box-content rounded-full aspect-square min-w-10 p-1 absolute top-2 left-2 flex justify-center items-center border-card-foreground z-50'
 						>
-							<FileQuestion className="w-10 h-10" />
+							<FileQuestion className="w-10 h-10 text-card-foreground" />
 						</button>
 						<motion.div
 							className="text-red-foreground text-2xl font-bold border-4 box-content rounded-full aspect-square min-w-10 p-1 absolute top-2 right-2 flex justify-center items-center border-card-foreground "
@@ -111,11 +114,15 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 							{active.id}
 						</motion.div>
 
-						<motion.div layoutId={`image-${active.name}-${id}`}>
+						<motion.div
+							className="flex justify-center items-center "
+							layoutId={`image-${active.name}-${id}`}
+						>
 							<Image
 								priority
-								width={300}
-								height={300}
+								width={280}
+								height={280}
+								unoptimized
 								src={
 									info
 										? active.sprites.other.showdown.back_default
@@ -128,10 +135,10 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 									active.sprites.front_default ||
 									active.sprites.other.home.front_default
 								}
-								className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-contain"
+								className=" w-[280px] h-[280px] lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-scale-down scale-[3.3] z-50  pointer-events-none"
 							/>
 						</motion.div>
-						<div className="flex flex-col w-full gap-4 justify-between items-start p-4">
+						<div className="flex flex-col w-full gap-4 justify-between items-start p-4 ">
 							<div className="flex gap-2 justify-center items-center w-full">
 								<motion.h3
 									layoutId={`name-${active.name}-${id}`}
@@ -168,6 +175,141 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 												(entry) => entry.language.name === 'en'
 											)?.flavor_text
 										}
+									</motion.div>
+									<motion.div
+										className="flex justify-around item-center "
+										initial="hidden"
+										animate="visible"
+										exit={{ opacity: 0, transition: { duration: 0.05 } }}
+										variants={{
+											hidden: { opacity: 0 },
+											visible: {
+												opacity: 1,
+												transition: {
+													delayChildren: 0.3, // Délai avant de commencer l'animation des enfants
+													staggerChildren: 0.2, // Délai entre chaque enfant
+												},
+											},
+										}}
+									>
+										<motion.span
+											className="font-bold min-w-16 "
+											variants={{
+												hidden: { opacity: 0 },
+												visible: { opacity: 1 },
+											}}
+										>
+											Height
+										</motion.span>
+										<motion.div
+											variants={{
+												hidden: { opacity: 0 },
+												visible: { opacity: 1 },
+											}}
+										>
+											<ArrowBigRightDash />
+										</motion.div>
+
+										<motion.div
+											className="px-2 mx-2 border rounded-xl"
+											variants={{
+												hidden: { opacity: 0 },
+												visible: { opacity: 1 },
+											}}
+										>
+											{active.height / 10} {'m'}
+										</motion.div>
+									</motion.div>
+									<motion.div
+										className="flex justify-around item-center "
+										initial="hidden"
+										animate="visible"
+										exit={{ opacity: 0, transition: { duration: 0.05 } }}
+										variants={{
+											hidden: { opacity: 0 },
+											visible: {
+												opacity: 1,
+												transition: {
+													delayChildren: 0.3, // Délai avant de commencer l'animation des enfants
+													staggerChildren: 0.2, // Délai entre chaque enfant
+												},
+											},
+										}}
+									>
+										<motion.span
+											className="font-bold min-w-16 "
+											variants={{
+												hidden: { opacity: 0 },
+												visible: { opacity: 1 },
+											}}
+										>
+											Weight
+										</motion.span>
+										<motion.div
+											variants={{
+												hidden: { opacity: 0 },
+												visible: { opacity: 1 },
+											}}
+										>
+											<ArrowBigRightDash />
+										</motion.div>
+
+										<motion.div
+											className="px-2 mx-2 border rounded-xl"
+											variants={{
+												hidden: { opacity: 0 },
+												visible: { opacity: 1 },
+											}}
+										>
+											{active.weight / 10} {'kg'}
+										</motion.div>
+									</motion.div>{' '}
+									<motion.div
+										className="flex flex-wrap justify-around item-center "
+										initial="hidden"
+										animate="visible"
+										exit={{ opacity: 0, transition: { duration: 0.05 } }}
+										variants={{
+											hidden: { opacity: 0 },
+											visible: {
+												opacity: 1,
+												transition: {
+													delayChildren: 0.3, // Délai avant de commencer l'animation des enfants
+													staggerChildren: 0.2, // Délai entre chaque enfant
+												},
+											},
+										}}
+									>
+										<motion.span
+											className="font-bold min-w-16"
+											variants={{
+												hidden: { opacity: 0 },
+												visible: { opacity: 1 },
+											}}
+										>
+											Abilities
+										</motion.span>
+										<motion.div
+											variants={{
+												hidden: { opacity: 0 },
+												visible: { opacity: 1 },
+											}}
+										>
+											<ArrowBigRightDash />
+										</motion.div>
+
+										{active.abilities.map((ability) => (
+											<motion.div
+												key={ability.ability.name}
+												className="px-2 mx-2  rounded-xl border"
+												variants={{
+													hidden: { opacity: 0 },
+													visible: { opacity: 1 },
+												}}
+											>
+												{ability.ability.name}
+											</motion.div>
+										))}
 									</motion.div>
 								</>
 							) : (
