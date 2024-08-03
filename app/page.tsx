@@ -61,12 +61,13 @@ export default function PokedexSection() {
 						},
 					}}
 					transition={{ delay: 0.3, duration: 0.3 }}
-					className="w-64 h-40  rounded-xl bg-red border-red-foreground border-4 flex flex-col justify-center items-center"
+					className="w-60 h-[135px] rounded-xl bg-red border-red-foreground border-4 flex flex-col justify-center items-center overflow-hidden"
 					onClick={() => router.push('/pokedex')}
 				>
-					<div className="w-60 h-40 -mb-20">
+					<div className="w-60 h-[150px] -mt-1 -mb-[90px] border rounded-xl">
 						{resolvedTheme === 'dark' ? (
 							<video
+								className="rounded-xl border h-[140px]"
 								key="black-video" // key pour forcer le rechargement lorsque le thème change
 								ref={videoRef}
 								src="/pokedex-black.mp4"
@@ -80,6 +81,7 @@ export default function PokedexSection() {
 							/>
 						) : (
 							<video
+								className="rounded-xl border"
 								key="white-video" // key pour forcer le rechargement lorsque le thème change
 								ref={videoRef}
 								src="/pokedex-white.mp4"
