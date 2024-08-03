@@ -79,13 +79,13 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 				<motion.div
 					layoutId={`card-${active.name}-${id}`}
 					initial={{
-						height: 400,
+						height: 500,
 					}}
 					animate={{
 						opacity: 1,
 						height: 600,
 
-						transition: { duration: 0.5 },
+						transition: { duration: 0.8 },
 					}}
 					exit={{ opacity: 0, transition: { duration: 0.5 } }}
 					ref={ref}
@@ -107,16 +107,23 @@ const PokemonCardActive = forwardRef<HTMLDivElement, PokemonCardActiveProps>(
 						>
 							<FileQuestion className="w-10 h-10 text-card-foreground" />
 						</button>
+
 						<motion.div
-							className="text-red-foreground text-2xl font-bold border-4 box-content rounded-full aspect-square min-w-10 p-1 absolute top-2 right-2 flex justify-center items-center border-card-foreground "
-							layoutId={`id-${active.name}-${id}`}
+							key={`id-${active.id}`}
+							initial={{ opacity: 0, x: 20 }}
+							animate={{ opacity: 1, x: 0 }}
+							exit={{ opacity: 0, x: 20 }}
+							transition={{ duration: 0.3 }}
+							className="text-red-foreground text-2xl font-bold border-4 box-content rounded-full aspect-square min-w-10 p-1 absolute top-2 right-2 flex justify-center items-center border-card-foreground"
 						>
 							{active.id}
 						</motion.div>
-
+						
 						<motion.div
-							className="flex justify-center items-center "
-							layoutId={`image-${active.name}-${id}`}
+							className="flex justify-center items-center"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ delay: 0.3 }}
 						>
 							<Image
 								priority
