@@ -18,10 +18,10 @@ const useFetchPokemons = (page: number) => {
 
 	useEffect(() => {
 		// Skip the first effect run if it's the initial mount FOR LOCALHOST  !!!!!!!!
-		if (isInitialMount.current) {
-			isInitialMount.current = false;
-			return;
-		}
+		// if (isInitialMount.current) {
+		// 	isInitialMount.current = false;
+		// 	return;
+		// }
 
 		setIsLoading(true);
 		const fetchData = async () => {

@@ -8,11 +8,11 @@ const useFetchPokemonSpecies = (id?: number) => {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		if (id === undefined || id === null) {
-			setSearchedPokemonSpecies(null);
-			setIsLoading(false);
-			return;
-		}
+		// if (id === undefined || id === null) {
+		// 	setSearchedPokemonSpecies(null);
+		// 	setIsLoading(false);
+		// 	return;
+		// }
 
 		setIsLoading(true);
 		fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
@@ -20,8 +20,7 @@ const useFetchPokemonSpecies = (id?: number) => {
 			.then((data) => {
 				setSearchedPokemonSpecies(data);
 				setIsLoading(false);
-                console.log(data);
-                
+				console.log(data);
 			})
 			.catch((error) => {
 				console.error('Failed to fetch Pokémon species:', error);
