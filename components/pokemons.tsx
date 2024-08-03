@@ -167,18 +167,20 @@ const Pokemons = () => {
 			</section>
 
 			{isSearching && searchedPokemon ? (
-				<section className="w-full h-[90vh] flex justify-center items-center ">
-					<div className="w-[400px] aspect-square">
-						<PokemonCard
-							key={`${id}-${searchedPokemon.id}`}
-							id={id}
-							setActive={setActive}
-							pokemonDetail={searchedPokemon}
-							active={active}
-							searchedPokemonSpecies={searchedPokemonSpecies}
-						/>
-					</div>
-				</section>
+				<div className="w-full flex justify-center items-center ">
+					<section className="p-10 m-auto lg:grid-cols-4  mt-10 gap-4 rounded-xl">
+						<div className="w-[400px] max-md:w-[300px] aspect-square">
+							<PokemonCard
+								key={`${id}-${searchedPokemon.id}`}
+								id={id}
+								setActive={setActive}
+								pokemonDetail={searchedPokemon}
+								active={active}
+								searchedPokemonSpecies={searchedPokemonSpecies}
+							/>
+						</div>
+					</section>
+				</div>
 			) : (
 				<>
 					<section className="w-full p-10 m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 item-center justify-center mt-10 gap-4 rounded-xl">
