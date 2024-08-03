@@ -44,7 +44,7 @@ export default function PokedexSection() {
 
 	return (
 		<section className="relative w-full h-full flex justify-center items-center flex-col bg-primary max-w-7xl m-auto">
-			<div className="absolute top-2 right-10 p-1">
+			<div className="absolute p-1 top-5 right-5">
 				<ModeToggle />
 			</div>
 
@@ -61,10 +61,10 @@ export default function PokedexSection() {
 						},
 					}}
 					transition={{ delay: 0.3, duration: 0.3 }}
-					className="absolute w-64  rounded-xl bg-red border-red-foreground border-4"
+					className="w-64 h-40  rounded-xl bg-red border-red-foreground border-4 flex flex-col justify-center items-center"
 					onClick={() => router.push('/pokedex')}
 				>
-					<div className="w-60 -mb-20">
+					<div className="w-60 h-40 -mb-20">
 						{resolvedTheme === 'dark' ? (
 							<video
 								key="black-video" // key pour forcer le rechargement lorsque le thème change
@@ -93,8 +93,9 @@ export default function PokedexSection() {
 							/>
 						)}
 					</div>
-
-					<Viewer />
+					<div className="h-20 w-20 flex justify-center items-center ">
+						<Viewer />
+					</div>
 				</motion.button>
 			</AnimatePresence>
 		</section>
