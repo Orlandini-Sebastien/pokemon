@@ -14,6 +14,7 @@ import BackgroundOverlay from '@/components/background-overlay';
 import { SquareArrowLeft } from 'lucide-react';
 import { ModeToggle } from './mode-toggle';
 import { useRouter } from 'next/navigation';
+import useFetchPokemonSpecies from '@/hooks/use-fetch-pokemon-spacies';
 
 const Pokemons = () => {
 	const router = useRouter();
@@ -32,6 +33,14 @@ const Pokemons = () => {
 		fetchPokemonById,
 		isLoading,
 	} = useFetchPokemons(page);
+
+	// Utilisation du hook pour obtenir les données de l'espèce Pokémon
+	const {
+		searchedPokemonSpecies,
+		isLoading: speciesLoading,
+	} = useFetchPokemonSpecies(
+		active && typeof active === 'object' ? active.id : undefined // Vérification ici
+	);
 
 	useEffect(() => {
 		function onKeyDown(event: KeyboardEvent) {
@@ -93,7 +102,9 @@ const Pokemons = () => {
 					ref={ref}
 					active={active}
 					setActive={setActive}
+					searchedPokemonSpecies={searchedPokemonSpecies}
 				/>
+				
 			</AnimatePresence>
 
 			<section className="flex max-md:hidden w-full justify-between item-center p-10 ">

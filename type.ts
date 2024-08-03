@@ -27,6 +27,10 @@ export interface PokemonDetails {
 			home: {
 				front_default: string;
 			};
+			showdown: {
+				back_default: string;
+				front_default: string;
+			};
 		};
 		versions: {
 			'generation-v': {
@@ -145,3 +149,15 @@ export const maxStats = {
 	'special-defense': 250,
 	speed: 200,
 };
+
+export interface PokemonSpecies {
+	flavor_text_entries: {
+		flavor_text: string;
+		language: {
+			name: string;
+		};
+		version: {
+			name: string;
+		};
+	}[];
+}

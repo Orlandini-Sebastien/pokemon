@@ -36,7 +36,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 			>
 				<Image
 					className="object-center w-5/6 aspect-square object-contain"
-					src={
+					src={pokemonDetail.sprites.other['official-artwork'].front_default ||
 						pokemonDetail.sprites.versions['generation-v']['black-white']
 							.animated.front_default ||
 						pokemonDetail.sprites.other.dream_world.front_default ||
