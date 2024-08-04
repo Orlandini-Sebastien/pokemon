@@ -6,6 +6,10 @@ import { ModeToggle } from '@/components/mode-toggle';
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState, RefObject } from 'react';
+import {
+	PikatchuLeftToRight,
+	PikatchuRightToLeft,
+} from '../components/pikatchu-run';
 
 export default function PokedexSection() {
 	const router = useRouter();
@@ -43,10 +47,12 @@ export default function PokedexSection() {
 	if (!mounted) return null; // Ne pas rendre le composant tant que le thème n'est pas appliqué
 
 	return (
-		<section className="relative w-full h-full flex justify-center items-center flex-col bg-primary max-w-7xl m-auto">
+		<section className="relative w-full h-full flex justify-center items-center flex-col bg-primary max-w-7xl m-auto overflow-clip">
 			<div className="absolute p-1 top-5 right-5">
 				<ModeToggle />
 			</div>
+
+			<PikatchuLeftToRight />
 
 			<AnimatePresence>
 				<motion.button
@@ -100,6 +106,8 @@ export default function PokedexSection() {
 					</div>
 				</motion.button>
 			</AnimatePresence>
+
+			<PikatchuRightToLeft />
 		</section>
 	);
 }
