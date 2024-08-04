@@ -13,13 +13,13 @@ import {
 
 export default function PokedexSection() {
 	const router = useRouter();
-	const { theme, resolvedTheme } = useTheme(); // Utilisez `resolvedTheme` pour obtenir le thème final appliqué
+	const { theme, resolvedTheme } = useTheme();
 	const videoRef: RefObject<HTMLVideoElement> = useRef(null);
 	const [hasPlayed, setHasPlayed] = useState(false);
-	const [mounted, setMounted] = useState(false); // Pour vérifier si le composant est monté
+	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
-		setMounted(true); // Marque le composant comme monté
+		setMounted(true);
 	}, []);
 
 	useEffect(() => {
@@ -37,77 +37,86 @@ export default function PokedexSection() {
 
 	useEffect(() => {
 		if (videoRef.current && mounted) {
-			// Rejouer la vidéo si le thème change
 			videoRef.current.pause();
-			videoRef.current.load(); // Recharge la vidéo pour s'assurer que la vidéo correcte est jouée
+			videoRef.current.load();
 			videoRef.current.play();
 		}
-	}, [resolvedTheme, mounted]); // Utilisation de `resolvedTheme` et `mounted`
+	}, [resolvedTheme, mounted]);
 
-	if (!mounted) return null; // Ne pas rendre le composant tant que le thème n'est pas appliqué
+	if (!mounted) return null;
 
 	return (
-		<section className="relative w-full h-full flex justify-center items-center flex-col bg-primary max-w-7xl m-auto overflow-clip">
-			<div className="absolute p-1 top-5 right-5">
-				<ModeToggle />
+		<section className="relative h-[100vh] w-full overflow-hidden">
+			{/* Conteneur avec effet de flou */}
+			<div
+				className="absolute inset-0 bg-cover bg-center"
+				style={{ backgroundImage: `url(/wallpaper_pokeball.jpg)` }}
+			></div>
+			<div className="absolute inset-0 bg-black opacity-85"></div>
+
+			{/* Contenu principal au-dessus du fond flouté */}
+			<div className="relative z-10 w-full h-full flex justify-center items-center flex-col max-w-7xl m-auto">
+				<div className="absolute p-1 top-5 right-5">
+					<ModeToggle />
+				</div>
+
+				<PikatchuLeftToRight />
+
+				<AnimatePresence>
+					<motion.button
+						initial={{ opacity: 0, scale: 0.9 }}
+						animate={{ opacity: 1, scale: 1 }}
+						whileHover={{ scale: 1.05 }}
+						exit={{
+							opacity: 0,
+							scale: 0.9,
+							transition: {
+								delay: 0.1,
+							},
+						}}
+						transition={{ delay: 0.3, duration: 0.3 }}
+						className="w-60 h-[135px] rounded-xl bg-red border-red-foreground border-4 flex flex-col justify-center items-center overflow-hidden"
+						onClick={() => router.push('/pokedex')}
+					>
+						<div className="w-60 h-[150px] -mt-1 -mb-[90px] border rounded-xl">
+							{resolvedTheme === 'dark' ? (
+								<video
+									className="rounded-xl border h-[140px]"
+									key="black-video"
+									ref={videoRef}
+									src="/pokedex-black.mp4"
+									muted
+									playsInline
+									onEnded={() => {
+										if (videoRef.current) {
+											videoRef.current.currentTime = 5;
+										}
+									}}
+								/>
+							) : (
+								<video
+									className="rounded-xl border"
+									key="white-video"
+									ref={videoRef}
+									src="/pokedex-white.mp4"
+									muted
+									playsInline
+									onEnded={() => {
+										if (videoRef.current) {
+											videoRef.current.currentTime = 5;
+										}
+									}}
+								/>
+							)}
+						</div>
+						<div className="h-20 w-20 flex justify-center items-center ">
+							<Viewer />
+						</div>
+					</motion.button>
+				</AnimatePresence>
+
+				<PikatchuRightToLeft />
 			</div>
-
-			<PikatchuLeftToRight />
-
-			<AnimatePresence>
-				<motion.button
-					initial={{ opacity: 0, scale: 0.9 }}
-					animate={{ opacity: 1, scale: 1 }}
-					whileHover={{ scale: 1.05 }}
-					exit={{
-						opacity: 0,
-						scale: 0.9,
-						transition: {
-							delay: 0.1,
-						},
-					}}
-					transition={{ delay: 0.3, duration: 0.3 }}
-					className="w-60 h-[135px] rounded-xl bg-red border-red-foreground border-4 flex flex-col justify-center items-center overflow-hidden"
-					onClick={() => router.push('/pokedex')}
-				>
-					<div className="w-60 h-[150px] -mt-1 -mb-[90px] border rounded-xl">
-						{resolvedTheme === 'dark' ? (
-							<video
-								className="rounded-xl border h-[140px]"
-								key="black-video" // key pour forcer le rechargement lorsque le thème change
-								ref={videoRef}
-								src="/pokedex-black.mp4"
-								muted
-								playsInline
-								onEnded={() => {
-									if (videoRef.current) {
-										videoRef.current.currentTime = 5; // Optionnel : pour rejouer la vidéo si nécessaire
-									}
-								}}
-							/>
-						) : (
-							<video
-								className="rounded-xl border"
-								key="white-video" // key pour forcer le rechargement lorsque le thème change
-								ref={videoRef}
-								src="/pokedex-white.mp4"
-								muted
-								playsInline
-								onEnded={() => {
-									if (videoRef.current) {
-										videoRef.current.currentTime = 5; // Optionnel : pour rejouer la vidéo si nécessaire
-									}
-								}}
-							/>
-						)}
-					</div>
-					<div className="h-20 w-20 flex justify-center items-center ">
-						<Viewer />
-					</div>
-				</motion.button>
-			</AnimatePresence>
-
-			<PikatchuRightToLeft />
 		</section>
 	);
 }
