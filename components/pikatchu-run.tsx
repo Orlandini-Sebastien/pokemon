@@ -7,7 +7,7 @@ const PikatchuLeftToRight = () => {
 	return (
 		<motion.section
 			className={'flex'}
-			style={{ position: 'relative', width: '100%', height: '100px' }}
+			style={{ position: 'relative', width: '100vw', height: '100px' }}
 			animate={{
 				x: ['0%', '100%'], // Animation de gauche à droite
 			}}
@@ -34,7 +34,7 @@ const PikatchuRightToLeft = () => {
 	return (
 		<motion.section
 			className="flex "
-			style={{ position: 'relative', width: '100%', height: '100px' }}
+			style={{ position: 'relative', width: '100vw', height: '100px' }}
 			animate={{
 				x: ['100%', '-15%'], // Animation de droite à gauche
 			}}
