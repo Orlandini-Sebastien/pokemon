@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pokédex Update
 
-## Getting Started
+Welcome to the latest version of my Pokédex project! I’m excited to share all the new features and improvements I’ve added. 🐾❗️
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+I had a blast working on the first page, where a playful Pikachu is always chasing after an elusive Mewtwo. ⚡️🐭⚡️ This project was a fantastic opportunity to expand my front-end development skills, and I’ve made some significant updates that I think you’ll enjoy.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Dynamic Button Video
+🎥 The button leading to the Pokédex now features a video that activates each time the theme switches between dark and light mode, adding an interactive touch to the user experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Three.js Pokéball Animation
+⚾️ The Pokéball animation is crafted using Three.js, bringing the site to life with a realistic, dynamic effect.
 
-## Learn More
+### Framer Motion Animations
+🛠️ The entire site utilizes Framer Motion for smooth, visually appealing transitions, making the user experience more engaging.
 
-To learn more about Next.js, take a look at the following resources:
+### Revamped Pokémon Cards
+🗃️ I’ve completely redesigned the Pokémon cards. Now, larger-than-life Pokémon leap out of the card with a trendy "out of the box" effect, making each card feel unique and exciting.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Interactive Card Flip
+🔁 I’ve added a flip feature to the Pokémon cards, allowing users to switch between general information and stats. This gives each card a dynamic, rotating reveal, adding depth to the interaction.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Infinite Scroll & Search
+🛠️ The project includes an infinite scroll feature for seamless navigation, along with a search function by ID, making it easier to find your favorite Pokémon.
 
-## Deploy on Vercel
+### Gradient-Based Pokémon Types
+🎆 Each Pokémon card now showcases a gradient based on its type, with animated characteristics. The cards are also styled differently for light and dark modes, enhancing the visual experience across themes. 🌞✨🌛
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Next.js**
+- **TypeScript**
+- **Tailwind CSS**
+- **Three.js**
+- **Framer Motion**
+
+## Live Demo
+
+Check out the live version of the project on Vercel: [Pokédex on Vercel](https://pokemon-theta-swart.vercel.app/)
