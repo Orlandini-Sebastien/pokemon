@@ -40,3 +40,7 @@ I had a blast working on the first page, where a playful Pikachu is always chasi
 ## Live Demo
 
 Check out the live version of the project on Vercel: [Pokédex on Vercel](https://pokemon-theta-swart.vercel.app/)
+
+---
+
+Feel free to explore the code and provide feedback. Keep coding and enjoy the creative process!
