@@ -36,11 +36,15 @@ transitions, making the user experience more engaging.
 out of the card with a trendy "out of the box" effect, making each card feel
 unique and exciting.
 
+![](public/card.png)
+
 ### Interactive Card Flip
 
 🔁 I’ve added a flip feature to the Pokémon cards, allowing users to switch
 between general information and stats. This gives each card a dynamic, rotating
 reveal, adding depth to the interaction.
+
+![](public/card-2.png)
 
 ### Infinite Scroll & Search
 
