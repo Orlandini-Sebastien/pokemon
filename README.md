@@ -1,4 +1,6 @@
-# Pokédex Update
+# ❗️ Pokédex ❗️
+
+https://res.cloudinary.com/dxznkdizm/video/upload/v1723492068/portfolio-orlandini-sebastien/pokemon/pokemon-home_opg4b2.mp4"
 
 Welcome to the latest version of my Pokédex project! I’m excited to share all
 the new features and improvements I’ve added. 🐾❗️
@@ -23,16 +25,19 @@ to the user experience.
 ⚾️ The Pokéball animation is crafted using Three.js, bringing the site to life
 with a realistic, dynamic effect.
 
+
 ### Framer Motion Animations
 
 🛠️ The entire site utilizes Framer Motion for smooth, visually appealing
 transitions, making the user experience more engaging.
 
-### Revamped Pokémon Cards
+### Pokémon Cards
 
-🗃️ I’ve completely redesigned the Pokémon cards. Now, larger-than-life Pokémon
+🗃️ I’ve completely redesigned the Pokémon cards. Larger-than-life Pokémon
 leap out of the card with a trendy "out of the box" effect, making each card
 feel unique and exciting.
+
+https://res.cloudinary.com/dxznkdizm/video/upload/v1723491981/portfolio-orlandini-sebastien/pokemon/pokemon-cards_ywk08o.mp4
 
 ### Interactive Card Flip
 
