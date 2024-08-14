@@ -3,6 +3,8 @@
 Welcome to the latest version of my Pokédex project! I’m excited to share all
 the new features and improvements I’ve added. 🐾❗️
 
+![](public/home.png)
+
 ## Overview
 
 I had a blast working on the first page, where a playful Pikachu is always
@@ -33,7 +35,6 @@ transitions, making the user experience more engaging.
 🗃️ I’ve completely redesigned the Pokémon cards. Larger-than-life Pokémon leap
 out of the card with a trendy "out of the box" effect, making each card feel
 unique and exciting.
-
 
 ### Interactive Card Flip
 
