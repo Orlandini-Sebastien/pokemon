@@ -1,6 +1,6 @@
 # ❗️ Pokédex ❗️
 
-<iframe width="560" height="315" src="https://res.cloudinary.com/dxznkdizm/video/upload/v1723492068/portfolio-orlandini-sebastien/pokemon/pokemon-home_opg4b2.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<video src='https://res.cloudinary.com/dxznkdizm/video/upload/v1723492068/portfolio-orlandini-sebastien/pokemon/pokemon-home_opg4b2.mp4' width=180/>
 
 Welcome to the latest version of my Pokédex project! I’m excited to share all
 the new features and improvements I’ve added. 🐾❗️
