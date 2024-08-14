@@ -1,8 +1,7 @@
 # ❗️ Pokédex ❗️
 
 [![Watch the video](https://res.cloudinary.com/dxznkdizm/video/upload/v1723492068/portfolio-orlandini-sebastien/pokemon/pokemon-home_opg4b2.mp4)
-
-
+[![Watch the video](https://res.cloudinary.com/dxznkdizm/video/upload/v1723492068/portfolio-orlandini-sebastien/pokemon/pokemon-home_opg4b2.mp4)](https://res.cloudinary.com/dxznkdizm/video/upload/v1723492068/portfolio-orlandini-sebastien/pokemon/pokemon-home_opg4b2.mp4)
 
 Welcome to the latest version of my Pokédex project! I’m excited to share all
 the new features and improvements I’ve added. 🐾❗️
